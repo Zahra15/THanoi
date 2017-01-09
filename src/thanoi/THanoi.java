@@ -7,6 +7,8 @@ package thanoi;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 
@@ -34,7 +36,7 @@ public class THanoi extends JComponent{
        Color[] color = {Color.blue, Color.red, Color.yellow, Color.orange};
       
        
-       int x = 60;
+       int x = 110;
        int y = 220;
        int w = 100;
        int h = 20;
@@ -46,59 +48,26 @@ public class THanoi extends JComponent{
            x = x-20;
            y = y+20;
            w = w+40;
-           //x = x+20;
-           //y = y-20;
-           //w = w-40;         
+                 
        } 
-     // Disk d1 = new Disk(60,280, 200, 20,Color.blue);
-      //Disk d2 = new Disk(80,260, 160, 20,Color.red);
-      //Disk d3 = new Disk(100,240, 120, 20,Color.yellow);
-      //Disk d4 = new Disk(120,220, 80, 20,Color.orange);
+ 
      // Disk d5 = new Disk(155,290, 10, 10,Color.blue);
       //Disk d5 = new Disk(405,290, 10, 10,Color.blue);
      // Disk d5 = new Disk(635,290, 10, 10,Color.blue);
  
-      //d1.setBounds(0, 0, 800, 400);
-      //d2.setBounds(0, 0, 800, 400);
-      //d3.setBounds(0, 0, 800, 400);
-      //d4.setBounds(0, 0, 800, 400);
-      //d5.setBounds(0, 0, 800, 400);
       
-      //p.add(d1);
-      //p.add(d2);
-      //p.add(d3);
-      //p.add(d4);
-      //p.add(d5);
        
       Tower t = new Tower();
       t.setBounds(0, 0, 800, 400);  
       p.add(t);
       
-      
+
       frame.setVisible(true);
-    solve(disks.length-1,  155, 635, 405);
+      
+    solve(disks.length-1,  160, 635, 405);
        
 
-      //Thread.sleep(1000);
-/*      
-     d1.moveDisk(405-(d1.w/2)+10, 280);
-     d2.moveDisk(405-(d2.w/2)+10, 260);
-     d3.moveDisk(405-(d3.w/2)+10, 240);
-     d4.moveDisk(405-(d4.w/2)+10, 220);
-             d1.repaint();
-             d2.repaint();
-             d3.repaint();
-             d4.repaint();*/
 
-             
-             
-//             Thread.sleep(1000);
-
-  //     d2.moveDisk(30, 50);
-    //   d2.repaint();
-       
-       
-       //frame.getContentPane().repaint();
         
        
     }
@@ -107,23 +76,43 @@ public class THanoi extends JComponent{
     //dist 635, 
     //mid 405
     static void solve(int disk, int source, int dest, int mid) throws InterruptedException{
- 
+        int x;
+        int y;
+      
         if(disk ==0 ){
            // return;
-           disks[disk].moveDisk(dest-(disks[disk].w/2), disks[disk].y);
-           Thread.sleep(2000);
+            x =dest-(disks[disk].w/2);
+           y=getY(dest);
+           disks[disk].moveDisk(x, y);
+           Thread.sleep(1000);
            disks[disk].repaint();
            //return;
         }else{
       
          solve(disk-1,source,mid,dest);
-        disks[disk].moveDisk(dest-(disks[disk].w/2), disks[disk].y);
-        Thread.sleep(2000);
+           x =dest-(disks[disk].w/2);
+           y=getY(dest);
+        disks[disk].moveDisk(x, y);
+        Thread.sleep(1000);
            disks[disk].repaint();
         solve(disk-1, mid, dest, source);
         }
-            
+        
     }
 
+static int getY(int x){
+    int y =280;
+    int diskPos;
+        for( int i =0; i< disks.length; i++){
+            diskPos =disks[i].x+(disks[i].w/2);
+            if( diskPos == x){
+                
+            y=y-20;
+            }
+        }
     
+    return y;   
+    }
+    
+
 }
