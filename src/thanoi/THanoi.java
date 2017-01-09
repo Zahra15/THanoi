@@ -127,7 +127,7 @@ public class THanoi extends JComponent{
       
         if(disk ==0 ){
            // return;
-            x =dest-(disks[disk].w/2);
+           x =dest-(disks[disk].w/2);
            y=getY(dest);
            disks[disk].moveDisk(x, y);
            Thread.sleep(1000);
