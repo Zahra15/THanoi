@@ -36,7 +36,7 @@ public class THanoi extends JComponent{
        
        int x = 60;
        int y = 220;
-       int w = 200;
+       int w = 100;
        int h = 20;
        
        for( int i =0; i< disks.length; i++){
