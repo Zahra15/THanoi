@@ -35,7 +35,7 @@ public class THanoi extends JComponent{
       
        
        int x = 60;
-       int y = 280;
+       int y = 220;
        int w = 200;
        int h = 20;
        
@@ -43,9 +43,12 @@ public class THanoi extends JComponent{
            disks[i] = new Disk(x,y,w,h,color[i]);
            disks[i].setBounds(0, 0, 800,400);
            p.add(disks[i]);
-           x = x+20;
-           y = y-20;
-           w = w-40;         
+           x = x-20;
+           y = y+20;
+           w = w+40;
+           //x = x+20;
+           //y = y-20;
+           //w = w-40;         
        } 
      // Disk d1 = new Disk(60,280, 200, 20,Color.blue);
       //Disk d2 = new Disk(80,260, 160, 20,Color.red);
@@ -113,7 +116,7 @@ public class THanoi extends JComponent{
            //return;
         }else{
       
-        solve(disk-1,source,mid,dest);
+         solve(disk-1,source,mid,dest);
         disks[disk].moveDisk(dest-(disks[disk].w/2), disks[disk].y);
         Thread.sleep(2000);
            disks[disk].repaint();
