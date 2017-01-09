@@ -10,6 +10,8 @@ import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -26,14 +28,18 @@ public class THanoi extends JComponent{
        JFrame frame = new JFrame();
        JPanel p = new JPanel();
 
-       
+            THanoi nn =new THanoi();
        JMenuBar menuBar = new JMenuBar();
        JMenu fileMenu = new JMenu("File");
     
        JMenuItem newMenuItem = new JMenuItem("New");
        JMenuItem dNumberMenuItem = new JMenuItem("Disks Number");
        JMenuItem exitMenuItem = new JMenuItem("Exit");
-    
+       
+       newMenuItem.addActionListener(new ActionListener(){
+          public void actionPerformed( ActionEvent event ) {
+              newGame();
+              } });
        exitMenuItem.addActionListener(new ActionListener(){
           public void actionPerformed( ActionEvent event ) {
              System.exit( 0 );
@@ -104,8 +110,10 @@ public class THanoi extends JComponent{
       
       
       frame.setVisible(true);
+
+     
     solve(disks.length-1,  155, 635, 405);
-       
+    
 
       //Thread.sleep(1000);
 /*      
@@ -152,6 +160,23 @@ public class THanoi extends JComponent{
         }
             
     }
+    static void newGame()
+    {
+        
+    String bigList[] = new String[6];
 
+    for (int i = 0; i < bigList.length; i++) {
+      bigList[i] = Integer.toString(1+i);
+    }
+JFrame frame = new JFrame();
+    //Object n = JOptionPane.showInputDialog(frame, "Number of Disks:", "Input", JOptionPane.QUESTION_MESSAGE,null, bigList,"");
+    String[] num={"1","2"};
+    JComboBox nn= new JComboBox(num);
+    setLayout( new FlowLayout() );
+    JFrame f= new JFrame();
+    f.add(nn);
+    f.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+    f.setSize( 350, 150 ); // set frame size
+    f.setVisible( true );
     
-}
+}}
