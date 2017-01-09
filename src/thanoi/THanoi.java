@@ -22,7 +22,7 @@ public class THanoi extends JComponent{
      * @param args the command line arguments
      */
  
-    static Disk[] disks = new Disk[4];
+    static Disk[] disks = new Disk[6];
     public static void main(String[] args) throws InterruptedException  {
        JFrame frame = new JFrame();
        JPanel p = new JPanel();
@@ -60,7 +60,7 @@ public class THanoi extends JComponent{
        frame.setLocationRelativeTo(null);
        p.setBackground(new Color(242, 242, 242));
       
-       Color[] color = {Color.blue, Color.red, Color.yellow, Color.orange};
+       Color[] color = {Color.green, Color.yellow, Color.orange, Color.red ,Color.magenta , Color.blue};
       
        
        int x = 110;
@@ -74,7 +74,7 @@ public class THanoi extends JComponent{
        //int w = 200;
        //int h = 20;
        for( int i =0; i< disks.length; i++){
-          if(j==4)
+          if(j==6)
                j=0;
            disks[i] = new Disk(x,y,w,h,color[j]);
            disks[i].setBounds(0, 0, 800,400);
@@ -111,8 +111,7 @@ public class THanoi extends JComponent{
       frame.setVisible(true);
       
     solve(disks.length-1,  160, 635, 405);
-       
-
+  
 
         
        
