@@ -172,7 +172,7 @@ JFrame frame = new JFrame();
     //Object n = JOptionPane.showInputDialog(frame, "Number of Disks:", "Input", JOptionPane.QUESTION_MESSAGE,null, bigList,"");
     String[] num={"1","2"};
     JComboBox nn= new JComboBox(num);
-    setLayout( new FlowLayout() );
+    
     JFrame f= new JFrame();
     f.add(nn);
     f.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
