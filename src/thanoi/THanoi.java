@@ -7,8 +7,10 @@ package thanoi;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 
@@ -25,6 +27,32 @@ public class THanoi extends JComponent{
     public static void main(String[] args) throws InterruptedException  {
        JFrame frame = new JFrame();
        JPanel p = new JPanel();
+
+       
+       JMenuBar menuBar = new JMenuBar();
+       JMenu fileMenu = new JMenu("File");
+    
+       JMenuItem newMenuItem = new JMenuItem("New");
+       JMenuItem dNumberMenuItem = new JMenuItem("Disks Number");
+       JMenuItem exitMenuItem = new JMenuItem("Exit");
+    
+       exitMenuItem.addActionListener(new ActionListener(){
+          public void actionPerformed( ActionEvent event ) {
+             System.exit( 0 );
+              } });
+       
+       
+        //adding items to menu
+        fileMenu.add(newMenuItem);
+        fileMenu.add(dNumberMenuItem);
+        fileMenu.add(exitMenuItem);
+     
+        // adding Menu to MenuBar
+        menuBar.add(fileMenu);
+    
+        // adding MenuBar to Frame
+        frame.setJMenuBar(menuBar);
+       
        p.setLayout(null);
        frame.setContentPane(p);
        frame.setSize(800, 400);
