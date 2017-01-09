@@ -38,8 +38,6 @@ public class THanoi extends JComponent{
        int x = 60;
        int num=disks.length-1;
        int y = (int) (280-(num*20));
-       
-       //int y = 220;
        int w = 100;
        int h = 20;
        int j=0;
