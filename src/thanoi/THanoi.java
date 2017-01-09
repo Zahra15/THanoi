@@ -91,8 +91,7 @@ public class THanoi extends JComponent{
       frame.setVisible(true);
       
     solve(disks.length-1,  160, 635, 405);
-       
-
+  
 
         
        
