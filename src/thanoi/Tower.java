@@ -66,4 +66,8 @@ public class Tower extends JComponent{
         g2.fill(disk4);*/
     }
     
+     public void getY(int x, int y){
+       JComponent co = (JComponent) getComponentAt(x,y);
+       Color coC = co.getBackground();
+    }
 }
