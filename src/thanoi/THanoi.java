@@ -107,27 +107,20 @@ public class THanoi extends JComponent{
       //Disk d5 = new Disk(405,290, 10, 10,Color.blue);
      // Disk d5 = new Disk(635,290, 10, 10,Color.blue);
  
-      //d1.setBounds(0, 0, 800, 400);
-      //d2.setBounds(0, 0, 800, 400);
-      //d3.setBounds(0, 0, 800, 400);
-      //d4.setBounds(0, 0, 800, 400);
-      //d5.setBounds(0, 0, 800, 400);
       
-      //p.add(d1);
-      //p.add(d2);
-      //p.add(d3);
-      //p.add(d4);
-      //p.add(d5);
        
      Tower t = new Tower();
       t.setBounds(0, 0, 800, 400);  
       p.add(t);
       
 
-      frame.setVisible(true); 
+      frame.setVisible(true);
       
-      
-    solve(disks.length-1,  160, 635, 405);      
+    solve(disks.length-1,  160, 635, 405);
+  
+
+        
+       
     }
     
     //source 155, 
@@ -139,7 +132,7 @@ public class THanoi extends JComponent{
       
         if(disk ==0 ){
            // return;
-            x =dest-(disks[disk].w/2);
+           x =dest-(disks[disk].w/2);
            y=getY(dest);
            disks[disk].moveDisk(x, y);
            Thread.sleep(1000);
@@ -157,7 +150,6 @@ public class THanoi extends JComponent{
         }
         
     }
-    
 
 static int getY(int x){
     int y =280;
@@ -169,29 +161,5 @@ static int getY(int x){
             y=y-20;
             }
         }
-        
-         return y;   
-    }
-
-
-        static void newGame()
-    {
-        
-    String bigList[] = new String[6];
-
-
-    for (int i = 0; i < bigList.length; i++) {
-      bigList[i] = Integer.toString(1+i);
-    }
-JFrame frame = new JFrame();
-    //Object n = JOptionPane.showInputDialog(frame, "Number of Disks:", "Input", JOptionPane.QUESTION_MESSAGE,null, bigList,"");
-    String[] num={"1","2"};
-    JComboBox nn= new JComboBox(num);
     
-    JFrame f= new JFrame();
-    f.add(nn);
-    f.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-    f.setSize( 350, 150 ); // set frame size
-    f.setVisible( true );
-    
-}}
+    return y;   }}
