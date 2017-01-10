@@ -71,3 +71,4 @@ public class Tower extends JComponent{
        Color coC = co.getBackground();
     }
 }
+ 

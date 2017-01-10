@@ -22,7 +22,7 @@ public class Disk extends JComponent{
     //private String color;
     public Color color;
     
-        public Disk(){}
+       
 
     public Disk(int x, int y, int w, int h, Color color){
         this.x = x;
@@ -38,12 +38,12 @@ public class Disk extends JComponent{
         this.y =y;
     }
     
-    public void getY(int x, int y){
-       JComponent co = (JComponent) getComponentAt(x,y);
-       Color coC = co.getBackground();
-    }
+    
+    
      @Override
-        public void paintComponent(Graphics d) {
+        
+     // called by repaint to draw rect 
+     public void paintComponent(Graphics d) {
            
             super.paintComponent(d);
             d.setColor(color);

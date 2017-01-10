@@ -69,67 +69,51 @@ public class THanoi extends JComponent{
        Color[] color = {Color.green, Color.yellow, Color.orange, Color.red ,Color.magenta , Color.blue};
       
        
-       int x = 110;
+       int x = 110; // x-cardinate of first disk (smallest)
        int num=disks.length-1;
-       int y = (int) (280-(num*20));
-       int w = 100;
-       int h = 20;
-       int j=0;
-       //int x = 60;
-       //int y = 280;
-       //int w = 200;
-       //int h = 20;
+       int y = (int) (280-(num*20));// 20 is height , 280 is the start of black 
+       int w = 100; // width of smallest disk
+       int h = 20; // height fixed for all
+       int j=0; // var for colorts 
+       
+       // loop for creating disks from object Disk
        for( int i =0; i< disks.length; i++){
           if(j==6)
                j=0;
            disks[i] = new Disk(x,y,w,h,color[j]);
-           disks[i].setBounds(0, 0, 800,400);
+           disks[i].setBounds(0, 0, 800,400); // bounds mehtod to show objects in null layout (x,y,w,h) 
            p.add(disks[i]);
-           x = x-20;
-           y = y+20;
-           w = w+40;
-
-           j++;
-           
-                   
-           //x = x+20;
-           //y = y-20;
-           //w = w-40;         
+           // increament for next disk
+           x = x-20; 
+            y = y+20; 
+           w = w+40;  
+          
+           j++;    
        }
-       
-       
-     // Disk d1 = new Disk(60,280, 200, 20,Color.blue);
-      //Disk d2 = new Disk(80,260, 160, 20,Color.red);
-      //Disk d3 = new Disk(100,240, 120, 20,Color.yellow);
-      //Disk d4 = new Disk(120,220, 80, 20,Color.orange);
-
-     // Disk d5 = new Disk(155,290, 10, 10,Color.blue);
-      //Disk d5 = new Disk(405,290, 10, 10,Color.blue);
-     // Disk d5 = new Disk(635,290, 10, 10,Color.blue);
- 
-      
-       
-     Tower t = new Tower();
-      t.setBounds(0, 0, 800, 400);  
+         
+     Tower t = new Tower();  // obj of class tower 
+      t.setBounds(0, 0, 800, 400); // each obj has bounds to be visible 
       p.add(t);
       
 
       frame.setVisible(true);
       
     solve(disks.length-1,  160, 635, 405);
+    // Solve(i of disk array, source, dest, mid)
   
 
         
        
     }
     
-    //source 155, 
-    //dist 635, 
-    //mid 405
+  
+    
+    //Interrupt Exception for sleep
     static void solve(int disk, int source, int dest, int mid) throws InterruptedException{
-        int x;
-        int y;
+        int x; // to determine new x-cordinate for movement
+        int y; //to determine new y-cordinate for movement
       
+        // the smallest 
         if(disk ==0 ){
            // return;
            x =dest-(disks[disk].w/2);
@@ -139,25 +123,30 @@ public class THanoi extends JComponent{
            disks[disk].repaint();
            //return;
         }else{
-      
-         solve(disk-1,source,mid,dest);
-           x =dest-(disks[disk].w/2);
+         
+         // Step 1 to solve move tower rather than the bigger to MID
+         solve(disk-1,source,mid,dest); 
+        // step 2 move from source to destination
+         x =dest-(disks[disk].w/2);
            y=getY(dest);
         disks[disk].moveDisk(x, y);
         Thread.sleep(1000);
            disks[disk].repaint();
+        // Step 3 Move tower to destination
         solve(disk-1, mid, dest, source);
         }
         
     }
 
-static int getY(int x){
+static int getY(int desti){
     int y =280;
     int diskPos;
         for( int i =0; i< disks.length; i++){
-            diskPos =disks[i].x+(disks[i].w/2);
-            if( diskPos == x){
-                
+            diskPos =disks[i].x+(disks[i].w/2); // to get disks positions 
+            
+            // if the disk in desstination we will chnage y 
+            
+            if( diskPos == desti){
             y=y-20;
             }
         }
