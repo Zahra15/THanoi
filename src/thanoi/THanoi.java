@@ -33,14 +33,8 @@ public class THanoi extends JComponent{
        JMenuBar menuBar = new JMenuBar();
        JMenu fileMenu = new JMenu("File");
     
-       JMenuItem newMenuItem = new JMenuItem("New");
-       JMenuItem dNumberMenuItem = new JMenuItem("Disks Number");
        JMenuItem exitMenuItem = new JMenuItem("Exit");
        
-       newMenuItem.addActionListener(new ActionListener(){
-          public void actionPerformed( ActionEvent event ) {
-              //newGame();
-              } });
        exitMenuItem.addActionListener(new ActionListener(){
           public void actionPerformed( ActionEvent event ) {
              System.exit( 0 );
@@ -48,8 +42,7 @@ public class THanoi extends JComponent{
        
        
         //adding items to menu
-        fileMenu.add(newMenuItem);
-        fileMenu.add(dNumberMenuItem);
+       
         fileMenu.add(exitMenuItem);
      
         // adding Menu to MenuBar
