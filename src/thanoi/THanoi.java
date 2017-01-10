@@ -39,7 +39,7 @@ public class THanoi extends JComponent{
        
        newMenuItem.addActionListener(new ActionListener(){
           public void actionPerformed( ActionEvent event ) {
-              newGame();
+              //newGame();
               } });
        exitMenuItem.addActionListener(new ActionListener(){
           public void actionPerformed( ActionEvent event ) {
